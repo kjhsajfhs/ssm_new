@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: net.xdclass.demoproject.DemoProjectApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 10.664 s - in net.xdclass.demoproject.DemoProjectApplicationTests
