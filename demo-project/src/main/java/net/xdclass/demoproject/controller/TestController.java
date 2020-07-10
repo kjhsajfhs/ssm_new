@@ -28,6 +28,7 @@ public class TestController {
 
     @GetMapping("get_config")
     public JsonData testConfig(){
+        System.out.println(12345);
         HashMap<Object, Object> map = new HashMap<>();
         System.out.println(12222);
         map.put("appid",wxConfig.getPayAppid());
