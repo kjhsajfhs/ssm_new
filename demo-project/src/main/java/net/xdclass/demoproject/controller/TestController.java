@@ -30,7 +30,7 @@ public class TestController {
     public JsonData testConfig(){
         System.out.println(12345);
         HashMap<Object, Object> map = new HashMap<>();
-        System.out.println(12222);
+        System.out.println(43434);
         map.put("appid",wxConfig.getPayAppid());
         map.put("secret",wxConfig.getPaySecret());
         map.put("mechId",wxConfig.getPayMechId());
