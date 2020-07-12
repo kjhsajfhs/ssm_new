@@ -2,7 +2,6 @@ package net.xdclass.demoproject.controller;
 
 
 import net.xdclass.demoproject.domain.User;
-import net.xdclass.demoproject.mapper.UserMapper;
 import net.xdclass.demoproject.service.UserService;
 import net.xdclass.demoproject.utils.JsonData;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +29,7 @@ public class UserController {
     }
 
     @GetMapping("list_user")
-    public JsonData listUser(){
+    public JsonData listUser(User user){
       return   JsonData.buildSuccess(userService.listUser());
     };
 }
