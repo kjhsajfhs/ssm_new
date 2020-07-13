@@ -1,19 +1,17 @@
 package net.xdclass.demoproject.filter;
 
-
 import com.fasterxml.jackson.databind.ObjectMapper;
 import net.xdclass.demoproject.domain.User;
 import net.xdclass.demoproject.service.impl.UserServiceImpl;
 import net.xdclass.demoproject.utils.JsonData;
-import org.thymeleaf.util.StringUtils;
+import org.springframework.util.StringUtils;
 
 import javax.servlet.*;
-import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.logging.LogRecord;
+
 
 /* @
  * @ClassName LoginFilter

@@ -4,9 +4,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import net.xdclass.demoproject.domain.User;
 import net.xdclass.demoproject.service.impl.UserServiceImpl;
 import net.xdclass.demoproject.utils.JsonData;
+import org.springframework.util.StringUtils;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
-import org.thymeleaf.util.StringUtils;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
