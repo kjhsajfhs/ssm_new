@@ -1,5 +1,6 @@
 package net.xdclass.demoproject.service.impl;
 
+import com.sun.deploy.cache.BaseLocalApplicationProperties;
 import net.xdclass.demoproject.domain.User;
 import net.xdclass.demoproject.mapper.UserMapper;
 import net.xdclass.demoproject.service.UserService;
@@ -20,7 +21,7 @@ import java.util.UUID;
  **/
 @Service
 public class UserServiceImpl implements UserService {
-    private static Map<String,User> sessionMap = new HashMap<>();
+    public static Map<String,User> sessionMap = new HashMap<>();
 
     @Autowired
     private UserMapper userMapper;
