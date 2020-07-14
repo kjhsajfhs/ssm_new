@@ -1,7 +1,10 @@
 package net.xdclass.online_class;
 
 import net.xdclass.online_class.dao.VideoMapper;
+import net.xdclass.online_class.dao.VideoOrderMapper;
+import net.xdclass.online_class.domain.User;
 import net.xdclass.online_class.domain.Video;
+import net.xdclass.online_class.domain.VideoOrder;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -34,12 +37,15 @@ public class SqlSessionDemo {
         //获取Session
         try (SqlSession sqlSession=sqlSessionFactory.openSession()){
             VideoMapper videoMapper = sqlSession.getMapper(VideoMapper.class);
-          /*  Video video = videoMapper.selectById(44);
+            VideoOrderMapper videoOrderMapper = sqlSession.getMapper(VideoOrderMapper.class);
+   /*         Video video = videoMapper.selectById(44);
             List<Video> videos = videoMapper.selectList();
             System.out.println(video.toString());
             System.out.println(videos.toString());*/
+
       /*      List<Video> videoList = videoMapper.selectByPointAndTitleLike(8.7, "HTML");
             System.out.println(videoList.toString());*/
+
       /*      Video video = new Video();
             video.setTitle("小滴课堂面试");
             video.setCoverImg("xdclass.net/bbb.png");
@@ -62,6 +68,8 @@ public class SqlSessionDemo {
              videoMapper.addBatch(list);
 
             System.out.println(video.toString());*/
+
+
 /*
             Video video = new Video();
             video.setId(51);
@@ -69,10 +77,25 @@ public class SqlSessionDemo {
             video.setCoverImg("xdclass.net/6666.png");
 
             videoMapper.updateVideoSelective(video);*/
-            HashMap<String, Object> map = new HashMap<>();
+
+
+/*            HashMap<String, Object> map = new HashMap<>();
             map.put("createTime","2021-01-11 00:00:00");
             map.put("price",88);
-            videoMapper.deleteByCreateTimeAndPrice(map);
+            videoMapper.deleteByCreateTimeAndPrice(map);*/
+
+/*            Video video = videoMapper.selectBaseFieldByIdWithResultMap(40);
+            System.out.println(video.toString());*/
+
+            //resultMap association关联查询
+/*            List<VideoOrder> videoOrders = videoOrderMapper.queryVideoOrderList();
+            for (VideoOrder videoOrder:videoOrders){
+                System.out.println(videoOrder.getUser().getName());
+            }*/
+
+
+            List<User> userList = videoOrderMapper.queryUserOrder();
+            System.out.println(userList.toString());
         }
 
     }

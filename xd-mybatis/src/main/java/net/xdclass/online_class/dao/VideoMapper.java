@@ -39,5 +39,7 @@ public interface VideoMapper {
   /*根据时间和价格删除*/
   int deleteByCreateTimeAndPrice(Map<String,Object> map);
 
+  Video selectBaseFieldByIdWithResultMap(@Param("video_id") int id);
+
 
 }
