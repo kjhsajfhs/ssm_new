@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
+import java.util.Map;
 
 public interface VideoMapper {
 
@@ -27,4 +28,16 @@ public interface VideoMapper {
 
     /*批量插入*/
     int addBatch(List<Video> list);
+    
+  /*更新视频*/
+    int updateVideo(Video video);
+
+  /*  动态更新视频*/
+  int updateVideoSelective(Video video);
+
+
+  /*根据时间和价格删除*/
+  int deleteByCreateTimeAndPrice(Map<String,Object> map);
+
+
 }

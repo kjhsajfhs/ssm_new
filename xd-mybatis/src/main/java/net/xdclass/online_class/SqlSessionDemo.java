@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 /* @
@@ -39,7 +40,7 @@ public class SqlSessionDemo {
             System.out.println(videos.toString());*/
       /*      List<Video> videoList = videoMapper.selectByPointAndTitleLike(8.7, "HTML");
             System.out.println(videoList.toString());*/
-            Video video = new Video();
+      /*      Video video = new Video();
             video.setTitle("小滴课堂面试");
             video.setCoverImg("xdclass.net/bbb.png");
             video.setPoint(9.4);
@@ -60,7 +61,18 @@ public class SqlSessionDemo {
             list.add(video2);
              videoMapper.addBatch(list);
 
-            System.out.println(video.toString());
+            System.out.println(video.toString());*/
+/*
+            Video video = new Video();
+            video.setId(51);
+            video.setTitle("小弟课堂修改测试");
+            video.setCoverImg("xdclass.net/6666.png");
+
+            videoMapper.updateVideoSelective(video);*/
+            HashMap<String, Object> map = new HashMap<>();
+            map.put("createTime","2021-01-11 00:00:00");
+            map.put("price",88);
+            videoMapper.deleteByCreateTimeAndPrice(map);
         }
 
     }
