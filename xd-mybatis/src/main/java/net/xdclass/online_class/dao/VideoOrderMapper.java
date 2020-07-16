@@ -10,7 +10,14 @@ public interface VideoOrderMapper {
     /*查询全部订单，关联用户信息*/
     List<VideoOrder> queryVideoOrderList();
 
+    /*查询全部订单，关联用户信息 懒加载*/
+    List<VideoOrder> queryVideoOrderListLazy();
+
+
 
     /*查询全部用户的订单*/
     List<User> queryUserOrder();
+
+
+
 }

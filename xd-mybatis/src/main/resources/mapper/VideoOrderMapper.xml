@@ -93,6 +93,35 @@
     </select>
 
 
+    <resultMap id="VideoOrderResultMapLazy" type="VideoOrder">
+        <id column="id" property="id"/>
+        <result column="user_id" property="userId"/>
+        <result column="out_trade_no" property="outTradeNo"/>
+        <result column="create_time" property="createTime"/>
+        <result column="state" property="state"/>
+        <result column="total_fee" property="totalFee"/>
+        <result column="video_id" property="videoId"/>
+        <result column="video_title" property="videoTitle"/>
+        <association property="user" javaType="User" column="user_id" select="findUserByUserId" />
+    </resultMap>
+
+    <!--一对一关联查询订单，订单内部包含用户属性 懒加载-->
+    <select id="queryVideoOrderListLazy" resultMap="VideoOrderResultMapLazy">
+        select o.id,o.user_id,
+        o.out_trade_no,
+        o.create_time,
+        o.state,
+        o.total_fee,
+        o.video_id,
+        o.video_title
+        from video_order o
+    </select>
+
+    <select id="findUserByUserId" resultType="User">
+        select * from user where id=#{id}
+    </select>
+
+
 
 
 

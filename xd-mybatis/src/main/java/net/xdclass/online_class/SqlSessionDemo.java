@@ -36,11 +36,15 @@ public class SqlSessionDemo {
 
         //获取Session
         try (SqlSession sqlSession=sqlSessionFactory.openSession()){
-            VideoMapper videoMapper = sqlSession.getMapper(VideoMapper.class);
+         /*   VideoMapper videoMapper = sqlSession.getMapper(VideoMapper.class);
             VideoOrderMapper videoOrderMapper = sqlSession.getMapper(VideoOrderMapper.class);
-   /*         Video video = videoMapper.selectById(44);
+            for (int i = 0; i <2 ; i++) {
+                Video video = videoMapper.selectById(44);
+                System.out.println(video.toString());
+            }*/
+
+/*
             List<Video> videos = videoMapper.selectList();
-            System.out.println(video.toString());
             System.out.println(videos.toString());*/
 
       /*      List<Video> videoList = videoMapper.selectByPointAndTitleLike(8.7, "HTML");
@@ -94,8 +98,15 @@ public class SqlSessionDemo {
             }*/
 
 
-            List<User> userList = videoOrderMapper.queryUserOrder();
-            System.out.println(userList.toString());
+       /*     List<User> userList = videoOrderMapper.queryUserOrder();
+            System.out.println(userList.toString());*/
+
+            //resultMap association 关联查询（测试懒加载）
+            VideoOrderMapper videoOrderMapper = sqlSession.getMapper(VideoOrderMapper.class);
+            List<VideoOrder> videoOrderList = videoOrderMapper.queryVideoOrderListLazy();
+            System.out.println(videoOrderList.get(0).getTotalFee());
+
+
         }
 
     }
