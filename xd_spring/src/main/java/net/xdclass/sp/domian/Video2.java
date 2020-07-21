@@ -1,8 +1,5 @@
 package net.xdclass.sp.domian;
 
-import java.util.List;
-import java.util.Map;
-
 /* @
  * @ClassName Video
  * @Description
@@ -10,11 +7,13 @@ import java.util.Map;
  * @Date 2020-07-16 11:57
  * Version 1.0
  **/
-public class Video {
+public class Video2 {
 
     private int id;
 
     private String title;
+
+    private String summary;
 
     public int getId() {
         return id;
@@ -32,11 +31,20 @@ public class Video {
         this.title = title;
     }
 
+    public String getSummary() {
+        return summary;
+    }
+
+    public void setSummary(String summary) {
+        this.summary = summary;
+    }
+
     @Override
     public String toString() {
-        return "Video{" +
+        return "Video2{" +
                 "id=" + id +
                 ", title='" + title + '\'' +
+                ", summary='" + summary + '\'' +
                 '}';
     }
 }
