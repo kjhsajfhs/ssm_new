@@ -1,23 +1,39 @@
+<!--
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-https://www.springframework.org/schema/beans/spring-beans.xsd">
+https://www.springframework.org/schema/beans/spring-beans.xsd
+http://www.springframework.org/schema/aop
+http://www.springframework.org/schema/aop/spring-aop-4.2.xsd"
+xmlns:aop="http://www.springframework.org/schema/aop">
     <bean id="video1" class="net.xdclass.sp.domian.Video" scope="singleton">
         <property name="id" value="9"/>
         <property name="title" value="Spring 5.X教程"/>
 
     </bean>
-<!--   <bean class="net.xdclass.sp.processor.CustomBeanPostProcessor"/>
+&lt;!&ndash;   <bean class="net.xdclass.sp.processor.CustomBeanPostProcessor"/>
     <bean id="video2" class="net.xdclass.sp.domian.Video2" scope="singleton" parent="video">
         <property name="summary" value="Spring 5.X教程"/>
 
-    </bean>-->
+    </bean>&ndash;&gt;
 
 
     <bean id="videoOrder" class="net.xdclass.sp.dao.VideoOrder" autowire="byType">
         <property name="id" value="8"/>
         <property name="outTradeNo" value="2232323"/>
     </bean>
+    &lt;!&ndash;。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。&ndash;&gt;
+    <bean id="timeHandler" class="net.xdclass.sp.aop.TimeHandler"/>
+    <bean id="videoService" class="net.xdclass.sp.service.impl.VideoServiceImpl"/>
 
-</beans>
+    &lt;!&ndash;aop配置&ndash;&gt;
+    <aop:config>
+        <aop:aspect id="timeAspect" ref="timeHandler">
+            <aop:pointcut id="allMethodLogPointCut" expression="execution(* net.xdclass.sp.service.impl.VideoServiceImpl.*(..))"/>
+            <aop:before method="printBefore" pointcut-ref="allMethodLogPointCut"/>
+            <aop:after method="printAfter" pointcut-ref="allMethodLogPointCut"/>
+        </aop:aspect>
+    </aop:config>
+
+</beans>-->

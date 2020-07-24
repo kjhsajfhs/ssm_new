@@ -1,7 +1,10 @@
 package net.xdclass.sp.domian;
 
-import java.util.List;
-import java.util.Map;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 
 /* @
  * @ClassName Video
@@ -10,11 +13,26 @@ import java.util.Map;
  * @Date 2020-07-16 11:57
  * Version 1.0
  **/
+@Component
+@Scope
 public class Video {
 
     private int id;
 
     private String title;
+
+
+
+    @PostConstruct
+    public void   init(){
+        System.out.println("vedio init被调用");
+    }
+
+    @PreDestroy
+    public void destory(){
+        System.out.println("video类 destory 方法被调用");
+    }
+
 
     public int getId() {
         return id;

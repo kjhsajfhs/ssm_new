@@ -1,10 +1,9 @@
 package net.xdclass.sp;
 
-import net.xdclass.sp.dao.VideoOrder;
+import net.xdclass.sp.aop.AnnotationAppConfig;
 import net.xdclass.sp.domian.Video;
-import net.xdclass.sp.domian.Video2;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import net.xdclass.sp.service.VideoService;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 /* @
  * @ClassName App
@@ -15,29 +14,13 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  **/
 public class App {
     public static void main(String[] args) {
-        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
- /*       Video video = (Video)applicationContext.getBean("video");
-        System.out.println(video.toString());*/
-  /*      VideoOrder videoOrder = (VideoOrder) applicationContext.getBean("videoOrder");
-        System.out.println(videoOrder.getOutTradeNo());
-        System.out.println(videoOrder.getVideo().getTitle());*/
-        testInject(applicationContext);
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AnnotationAppConfig.class);
+        VideoService videoService = (VideoService) context.getBean("videoService");
+        Video video = new Video();
+        video.setId(1);
+        video.setTitle("测试");
+        videoService.findById(1);
+        videoService.save(video);
 
-
-    }
-
-    //注入测试
-    private static void testInject(ApplicationContext context){
-        VideoOrder videoOrder = (VideoOrder) context.getBean("videoOrder");
-        System.out.println(videoOrder.getVideo().getTitle());
-
-    }
-
-    //作用域测试
-    private static void testScope(ApplicationContext context){
-        Video video1 = (Video)context.getBean("video");
-        Video video2 = (Video)context.getBean("video");
-//靠匹配内存地址，== 是匹配内存地址
-        System.out.println( video1 == video2 );
     }
 }
